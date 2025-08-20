@@ -12,7 +12,26 @@ const Content = styled.div`
   align-items: center;
   width: 100%;
   flex-direction: column;
-  transform: translateY(-50px);
+`;
+
+const AlertMessage = styled(Alert)`
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 90%;
+  white-space: nowrap;
+  z-index: 1000;
+
+  @media (max-width: 1620px) {
+    width: 75%;
+    max-width: 100%;
+    left: 60%;
+    transform: translateX(-50%);
+    white-space: normal;
+    text-align: center;
+  }
 `;
 
 const AlertWrapper = styled.div`
@@ -45,6 +64,11 @@ function Add() {
 
   return (
     <Content>
+      <AlertMessage
+        message="Sorry for the inconvenience: If this is your first request in a while, our free server may take up to ~50s to start. Hang tight! Once it’s up, every subsequent request will be smooth."
+        type="warning"
+        showIcon
+      />
       <Tooltip
         title={
           <TooltipContent>
